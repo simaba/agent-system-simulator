@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-scenarios:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run normal_success scenario
+        run: python run_demo.py --scenario normal_success
+
+      - name: Run retry_then_success scenario
+        run: python run_demo.py --scenario retry_then_success
+
+      - name: Run fallback_after_failure scenario
+        run: python run_demo.py --scenario fallback_after_failure
