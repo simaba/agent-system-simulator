@@ -52,9 +52,10 @@ Decide outcome}
 ```bash
 git clone https://github.com/simaba/agent-simulator.git
 cd agent-simulator
-pip install -r requirements.txt
 python run_demo.py --scenario normal_success
 ```
+
+This repository currently uses only the Python standard library, so no third-party installation step is required.
 
 Available scenarios:
 
@@ -81,7 +82,7 @@ See `examples/sample-output.md` for a full example run.
 
 ## Repository structure
 
-```
+```text
 run_demo.py             # Entry point
 src/
   agents.py             # Agent role implementations
@@ -90,7 +91,7 @@ src/
   scenarios.py          # Scenario definitions
 examples/
   sample-output.md      # Example run output
-requirements.txt
+requirements.txt        # Reserved for future optional dependencies
 ```
 
 ---
